@@ -54,6 +54,7 @@ export default function Home() {
       console.error(err);
     }
   };
+
   const handleSaveTemplate = async (newTemplate) => {
     try {
       const payload = {
@@ -85,7 +86,6 @@ export default function Home() {
     }
   };
 
-  // Workout summary
   const getWorkoutSummary = (session) => {
     let totalSets = 0,
       totalReps = 0,
@@ -126,13 +126,14 @@ export default function Home() {
 
   return (
     <div className="py-5 px-8 max-w-6xl mx-auto">
+      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
         <div>
           <h2 className="text-xl font-semibold text-gray-900 tracking-tight">
             MyFitnessBuddy <span className="text-blue-600">Home</span>
           </h2>
           <p className="text-sm text-gray-500 mt-1 mb-2 sm:mb-0">
-            Track your recent workouts and create workout template here.
+            Track your recent workouts and create workout templates here.
           </p>
         </div>
         <div className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-gray-50 to-gray-100 border border-gray-200 rounded-xl shadow-sm text-sm text-gray-700 hover:shadow-md transition-all duration-200">
@@ -146,25 +147,27 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Create workout button */}
       {recentWorkouts.length > 0 && (
         <div className="flex gap-4 mb-5 flex-wrap">
           <button
             onClick={handleAddWorkout}
-            className="px-4 py-2 text-base bg-blue-600 text-white font-bold rounded-2xl shadow hover:bg-blue-700 hover:shadow-md transition-all duration-200"
+            className="px-4 py-2 text-base text-white font-bold rounded-2xl 
+              bg-gradient-to-r from-blue-500 to-blue-600 shadow hover:from-blue-600 hover:to-blue-700 hover:shadow-md transition-all duration-200"
           >
             Create New Workout
           </button>
         </div>
       )}
 
+      {/* Workout Templates Section */}
       <section className="mb-7 w-full max-w-none">
-        <div className="flex items-center justify-between mb-2">
-          <h2 className="text-lg font-semibold"> Workout Templates</h2>
-
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-semibold">Workout Templates</h2>
           {templates.length > 0 && (
             <button
               onClick={() => setShowTemplateForm(true)}
-              className="px-3 py-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-medium rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+              className="px-2.5 py-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-medium rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               + Add new
             </button>
@@ -172,7 +175,7 @@ export default function Home() {
         </div>
 
         {templates.length === 0 && !showTemplateForm && (
-          <div className="p-6 border border-dashed border-gray-300 rounded-2xl bg-gray-50 text-center flex flex-col items-center justify-center">
+          <div className="p-6 border border-dashed border-gray-300 rounded-2xl bg-gray-50 text-center flex flex-col items-center justify-center mt-2">
             <div className="w-14 h-14 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full mb-3 text-2xl font-bold">
               +
             </div>
@@ -200,10 +203,9 @@ export default function Home() {
           />
         )}
 
-        {/* --- Show Templates --- */}
         {templates.length > 0 && (
           <>
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-500 text-sm mb-2">
               You currently have {templates.length} template
               {templates.length !== 1 ? "s" : ""}. Click add new to create
               template.
@@ -245,19 +247,18 @@ export default function Home() {
         )}
       </section>
 
+      {/* Recent Workouts Section */}
       <section>
-        <h2 className="text-lg font-semibold mb-3"> Recent Workouts</h2>
+        <h2 className="text-lg font-semibold">Recent Workouts</h2>
         {recentWorkouts.length > 0 && (
           <p className="text-gray-500 mb-5 text-sm">
-            Show workouts from the last 7 days.{" "}
-            {recentWorkouts.length > 0
-              ? "Click view exercises to see details on workouts page"
-              : ""}
+            Show workouts from the last 7 days. Click view workout to see
+            details on workouts page.
           </p>
         )}
 
         {recentWorkouts.length === 0 ? (
-          <div className="flex flex-col items-center justify-center text-center border border-dashed border-gray-300 bg-gray-50 rounded-2xl p-8">
+          <div className="flex flex-col items-center justify-center text-center border border-dashed border-gray-300 bg-gray-50 rounded-2xl p-8 mt-2">
             <div className="w-14 h-14 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full mb-3">
               <FaCalendarAlt className="text-2xl" />
             </div>
@@ -277,6 +278,12 @@ export default function Home() {
         ) : (
           <div className="grid md:grid-cols-2 gap-6">
             {recentWorkouts.map((session) => {
+              console.log(
+                "Exercises for session:",
+                session.id,
+                session.exercises
+              );
+
               const summary = getWorkoutSummary(session);
               const formattedDate = formatDateDisplay(session.session_date);
               const linkDate = formatDateForLink(session.session_date);
@@ -284,12 +291,13 @@ export default function Home() {
               return (
                 <div
                   key={session.id}
-                  className="bg-white border border-gray-200 rounded-2xl px-5 py-3 shadow hover:shadow-lg transition-all duration-200"
+                  className="bg-white border border-gray-200 rounded-2xl pt-3 pb-3.5 px-4 shadow hover:shadow-lg transition-all duration-200 flex flex-col"
                 >
-                  <h3 className="text-base font-semibold text-gray-800 mb-1 truncate">
+                  <h3 className="text-base font-semibold text-gray-800 mb-1.5 truncate">
                     {session.name}
                   </h3>
-                  <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-600 mb-3">
+
+                  <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-600 mb-2">
                     <FaCalendarAlt className="text-blue-400 w-3 h-3" />
                     <span>{formattedDate}</span>
                     <span className="text-gray-400">•</span>
@@ -298,8 +306,21 @@ export default function Home() {
                     <FaClock className="text-blue-400 w-3 h-3" />
                     <span>{session.start_time}</span>
                   </div>
-
-                  <div className="flex flex-wrap justify-between bg-gray-50 rounded-2xl p-3 sm:p-4 text-gray-700 mb-2">
+                  <div className="flex items-center gap-1 text-xs text-gray-500 mb-3 overflow-hidden whitespace-nowrap text-ellipsis">
+                    {session.exercises.slice(0, 2).map((ex, idx) => (
+                      <span key={idx}>
+                        {ex.session_exercise_name}
+                        {idx < Math.min(session.exercises.length, 2) - 1
+                          ? ","
+                          : ""}
+                      </span>
+                    ))}
+                    {session.exercises.length > 2 && (
+                      <span> ...+{session.exercises.length - 2}</span>
+                    )}
+                  </div>
+                  {/* Stats Card */}
+                  <div className="grid grid-cols-4 bg-gradient-to-r from-blue-50 via-gray-50 to-blue-50 border border-blue-100 rounded-2xl px-4 py-2.5 text-center text-gray-800 mb-3 shadow-sm">
                     {[
                       { label: "Exercises", value: summary.exerciseCount },
                       { label: "Sets", value: summary.totalSets },
@@ -308,9 +329,9 @@ export default function Home() {
                     ].map((stat) => (
                       <div
                         key={stat.label}
-                        className="flex flex-col items-center px-2 sm:px-4"
+                        className="flex flex-col items-center"
                       >
-                        <span className="text-base font-semibold text-gray-900">
+                        <span className="text-base font-extrabold text-gray-900">
                           {stat.value}
                         </span>
                         <span className="text-xs text-gray-500 uppercase tracking-wide">
@@ -320,11 +341,12 @@ export default function Home() {
                     ))}
                   </div>
 
+                  {/* View Button */}
                   <button
                     onClick={() => navigate(`/workouts/${linkDate}`)}
-                    className="w-full text-xs sm:text-sm font-medium text-blue-600 bg-blue-50 rounded-full shadow-sm hover:bg-blue-100 transition-all py-2"
+                    className="w-full text-sm py-1.5 mt-1 bg-white text-blue-600 font-semibold rounded-2xl border border-blue-100 shadow-sm hover:bg-blue-50 hover:shadow-md transition-all duration-200"
                   >
-                    View Exercises
+                    View Workout
                   </button>
                 </div>
               );

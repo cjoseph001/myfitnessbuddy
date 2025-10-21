@@ -21,41 +21,56 @@ export default function WorkoutTemplateCard({ template, onDelete }) {
         setLoading(false);
       }
     };
-
     fetchExercises();
   }, [template.id]);
 
-  const toggleExpand = () => {
-    setExpanded((prev) => !prev);
-  };
+  const toggleExpand = () => setExpanded((prev) => !prev);
+
   const subheaderText =
     exercises && exercises.length > 0
       ? exercises
           .slice(0, 3)
           .map((ex) => ex.name)
           .join(", ") +
-        (exercises.length > 3 ? `, ${exercises.length - 3} more...` : "")
+        (exercises.length > 3 ? `, +${exercises.length - 3} more` : "")
       : "";
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 via-white to-blue-100 border border-blue-200 rounded-2xl px-5 py-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
-      <div className="flex justify-between items-center">
-        <div>
-          <h3 className="font-semibold text-gray-900 text-lg">
+    <article
+      aria-labelledby={`template-${template.id}-title`}
+      className="relative bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
+    >
+      {/* Accent line */}
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-300" />
+
+      {/* Header */}
+      <div className="flex items-start justify-between pb-4 pt-3.5 pr-3 pl-4.5">
+        <div className="min-w-0 flex-1">
+          <h3
+            id={`template-${template.id}-title`}
+            className="text-base font-semibold text-gray-900 truncate"
+            title={template.title}
+          >
             {template.title}
           </h3>
+
           {!expanded && subheaderText && (
-            <p className="text-gray-500 text-sm mt-1">{subheaderText}</p>
+            <p
+              className="mt-1.5 text-xs text-gray-500 truncate"
+              title={subheaderText}
+            >
+              {subheaderText}
+            </p>
           )}
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <button
             onClick={toggleExpand}
-            className={`flex items-center gap-2 px-3.5 py-1.5 text-sm font-medium rounded-xl shadow-sm transition-all duration-200 ${
+            className={`inline-flex items-center px-3 py-1 rounded-3xl text-xs font-medium transition-all ${
               expanded
-                ? "bg-blue-50 text-blue-700 border border-blue-300 hover:bg-blue-100"
-                : "bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700"
+                ? "bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 border border-blue-200 hover:bg-blue-100"
+                : "bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:bg-blue-700"
             }`}
           >
             {expanded ? "Hide" : "Show"}
@@ -63,67 +78,97 @@ export default function WorkoutTemplateCard({ template, onDelete }) {
 
           <button
             onClick={() => onDelete(template.id)}
-            className="text-red-500 hover:text-red-800 transition-colors duration-200 px-1"
+            className="p-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-md transition-all"
             title="Delete Template"
           >
-            <TrashIcon className="w-5.5 h-5.5" />
+            <TrashIcon className="w-5 h-5" />
           </button>
         </div>
       </div>
 
-      {expanded && (
-        <div className="mt-3.5 border-t border-blue-100 pt-3">
+      <div
+        className={`transition-all duration-300 ease-in-out ${
+          expanded ? "max-h-[1500px] opacity-100" : "max-h-0 opacity-0"
+        } overflow-hidden`}
+      >
+        <div className="border-t border-gray-200 px-4 pb-4 pt-3">
           {loading ? (
-            <p className="text-gray-500 text-sm text-center py-3">
+            <p className="text-sm text-gray-500 py-4 text-center">
               Loading exercises...
             </p>
           ) : !exercises || exercises.length === 0 ? (
-            <p className="text-gray-500 text-sm text-center py-3">
-              No exercises yet.
+            <p className="text-sm text-gray-500 py-4 text-center">
+              No exercises in this template.
             </p>
           ) : (
-            <div className="space-y-6">
-              {exercises.map((ex, idx) => (
-                <div
-                  key={ex.workout_exercise_id || ex.id || idx}
-                  className="pb-4 border-b border-gray-100 last:border-b-0"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3">
-                    <p className="font-semibold text-gray-900 text-base">
-                      {idx + 1}. {ex.name}
-                    </p>
-                    <div className="flex gap-1 mt-2 sm:mt-0 flex-wrap">
-                      <span className="text-xs px-2 py-1 bg-blue-50 text-blue-700 rounded-full font-medium">
-                        {ex.muscle || "–"}
-                      </span>
-                      <span className="text-xs px-2 py-1 bg-blue-50 text-blue-700 rounded-full font-medium">
-                        {ex.equipment || "–"}
-                      </span>
+            <div className="space-y-3">
+              {exercises.map((ex, idx) => {
+                const name = ex.name || "Unnamed exercise";
+                const muscle = ex.muscle || "";
+                const equipment = ex.equipment || "";
+
+                return (
+                  <div
+                    key={ex.workout_exercise_id || ex.id || idx}
+                    className="group bg-white rounded-xl pt-3 pb-4 px-4 border border-gray-200 hover:border-blue-200 transition-all duration-300"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
+                      <div className="min-w-0 flex-1">
+                        <p className="text-base font-semibold truncate flex items-center gap-1.5">
+                          <span className="font-bold">{idx + 1}.</span>
+                          <span>{name}</span>
+                        </p>
+
+                        {/* Badges */}
+                        <div className="mt-1 flex flex-wrap items-center gap-1.5 text-xs font-medium text-gray-900">
+                          {muscle && (
+                            <span className="text-gray-700">{muscle}</span>
+                          )}
+                          {muscle && equipment && (
+                            <span className="text-gray-400">•</span>
+                          )}
+                          {equipment && (
+                            <span className="text-gray-600">{equipment}</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Sets Section */}
+                    <div className="mt-3.5">
+                      {ex.sets && ex.sets.length > 0 ? (
+                        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-gray-200">
+                          {ex.sets.map((s, i) => (
+                            <div
+                              key={i}
+                              className="flex-shrink-0 border border-gray-200 rounded-lg px-3 py-2 min-w-[100px] bg-gray-50 hover:bg-blue-50 transition-all duration-200"
+                              title={`Set ${s.set_no}: ${s.weight || 0} kg × ${
+                                s.reps || 0
+                              }`}
+                            >
+                              <p className="text-xs text-gray-500 mb-0.5">
+                                Set {s.set_no}
+                              </p>
+                              <p className="text-sm font-semibold text-gray-800">
+                                {s.weight ? `${s.weight} kg` : "– kg"} ×{" "}
+                                {s.reps || "–"}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-xs text-gray-500 mt-1 italic">
+                          No sets added
+                        </p>
+                      )}
                     </div>
                   </div>
-
-                  <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 text-sm">
-                    {ex.sets?.map((s, i) => (
-                      <div
-                        key={i}
-                        className="flex justify-between items-center bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 hover:bg-gray-100 transition"
-                      >
-                        <span className="text-gray-600 font-medium">
-                          Set {s.set_no}
-                        </span>
-                        <span className="text-gray-900 font-semibold">
-                          {s.weight === 0 ? "–" : s.weight} kg ×{" "}
-                          {s.reps === 0 ? "–" : s.reps}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
-      )}
-    </div>
+      </div>
+    </article>
   );
 }

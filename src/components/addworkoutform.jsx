@@ -73,9 +73,8 @@ export default function AddWorkoutForm({
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl px-5 py-4 shadow-sm hover:shadow-md transition-all duration-200 ease-in-out">
+    <div className="bg-white rounded-2xl px-5 py-4 mb-7.5 border border-blue-200 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
       <h2 className="text-lg font-bold mb-6 text-gray-900">Add New Workout</h2>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 items-end">
         <div className="md:col-span-3">
           <label
@@ -129,20 +128,20 @@ export default function AddWorkoutForm({
 
         <div className="md:col-span-3 flex flex-col sm:flex-row gap-2">
           <button
+            onClick={() => setShowTemplateModal(true)}
+            className="font-semibold flex-1 text-sm bg-green-100 hover:bg-green-100 text-green-700 font-medium px-5 py-2.5 rounded-xl shadow-sm border border-green-100 hover:shadow-md hover:border-green-200 transition-all duration-200 transform hover:-translate-y-0.5"
+          >
+            Apply Template
+          </button>
+
+          <button
             onClick={() => setShowExerciseModal(true)}
-            className="flex-1 text-sm bg-blue-50 hover:bg-blue-100 text-blue-700 font-medium px-4 py-2.5 rounded-xl shadow-sm transition"
+            className="font-semibold flex-1 text-sm bg-blue-100 hover:bg-blue-100 text-blue-700 font-medium px-5 py-2.5 rounded-xl shadow-sm border border-blue-100 hover:shadow-md hover:border-blue-200 transition-all duration-200 transform hover:-translate-y-0.5"
           >
             Select Exercises
           </button>
-          <button
-            onClick={() => setShowTemplateModal(true)}
-            className="flex-1 text-sm bg-green-50 hover:bg-green-100 text-green-700 font-medium px-4 py-2.5 rounded-xl shadow-sm transition"
-          >
-            Use Template
-          </button>
         </div>
       </div>
-
       <div className="space-y-6">
         {selectedExercises.map((ex, exIdx) => (
           <div
@@ -243,7 +242,6 @@ export default function AddWorkoutForm({
           </div>
         ))}
       </div>
-
       <div className="flex justify-end space-x-3 mt-7">
         <button
           onClick={handleClose}
@@ -258,7 +256,6 @@ export default function AddWorkoutForm({
           Save
         </button>
       </div>
-
       {showExerciseModal && (
         <ExerciseSelector
           exerciseList={exerciseList}
@@ -268,21 +265,38 @@ export default function AddWorkoutForm({
           onCancel={() => setShowExerciseModal(false)}
         />
       )}
-
       {showTemplateModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl p-6 max-w-3xl w-full max-h-[80vh] overflow-y-auto shadow-lg">
-            <h3 className="text-lg font-semibold mb-1 text-gray-900">
-              Select Template
+          <div className="bg-white rounded-2xl px-5 py-4 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-lg">
+            <h3 className="text-lg font-semibold mb-2 text-gray-900">
+              Select Workout Template
             </h3>
-            <p className="text-sm text-gray-500 mb-4">
-              Selecting a template will reset your current exercises and load
-              the new template’s exercises and sets.
-            </p>
+            {templates.length > 0 ? (
+              <p className="text-sm text-gray-500 mb-4">
+                Selecting a template will reset your current exercises and load
+                the new template’s exercises and sets.
+              </p>
+            ) : (
+              <p className="text-sm text-gray-500 mb-7.5">
+                {" "}
+                No template found.
+              </p>
+            )}
 
             <div className="space-y-3 max-h-[70vh] overflow-y-auto pr-2">
               {templates.length === 0 ? (
-                <p className="text-gray-500 text-sm">No templates found.</p>
+                <>
+                  <p className="text-gray-500 text-sm">
+                    Create templates on home page to quickly load your favorite
+                    workouts.
+                  </p>
+                  <button
+                    onClick={() => (window.location.href = "/")}
+                    className="px-3.5 py-1.5 text-sm rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 hover:bg-blue-700 text-white font-medium shadow-md hover:shadow-lg transition-all duration-200"
+                  >
+                    Go to Home
+                  </button>
+                </>
               ) : (
                 templates.map((t) => {
                   const isExpanded = expandedTemplates[t.id] || false;
@@ -378,12 +392,14 @@ export default function AddWorkoutForm({
               >
                 Cancel
               </button>
-              <button
-                onClick={handleTemplateConfirm}
-                className="px-4 py-2 rounded-full bg-green-700 hover:bg-green-500 text-white text-sm font-medium"
-              >
-                OK
-              </button>
+              {templates.length > 0 && (
+                <button
+                  onClick={handleTemplateConfirm}
+                  className="px-4 py-2 rounded-full bg-green-700 hover:bg-green-500 text-white text-sm font-medium"
+                >
+                  OK
+                </button>
+              )}
             </div>
           </div>
         </div>

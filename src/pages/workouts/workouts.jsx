@@ -268,10 +268,10 @@ export default function Workouts() {
         })}
       </h1>
       {!showForm && sessions?.length > 0 && (
-        <div className="mb-6">
+        <div className="mb-5.5">
           <button
             onClick={handleCreateWorkout}
-            className="bg-gradient-to-br from-blue-600 to-blue-500 text-white font-semibold text-sm px-5 py-2 rounded-full shadow-md hover:from-blue-500 hover:to-blue-400 hover:shadow-lg transition-all duration-200"
+            className="bg-gradient-to-br from-blue-600 to-blue-500 text-white font-semibold text-sm px-3.5 py-1.5 rounded-full shadow-md hover:from-blue-500 hover:to-blue-400 hover:shadow-lg transition-all duration-200"
           >
             + Add New Workout
           </button>
@@ -301,6 +301,23 @@ export default function Workouts() {
           removeExercise={removeExercise}
           user={user}
         />
+      )}
+
+      {sessions.length > 0 && (
+        <>
+          <h1 className="mb-1 font-semibold text-gray-800 text-base">
+            Workout Sessions
+          </h1>
+          <div className="mb-5 text-gray-500 text-sm">
+            {sessions.length} sessions done on{" "}
+            {selectedDate.toLocaleDateString("en-US", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })}
+            . Latest sessions are shown first.
+          </div>
+        </>
       )}
 
       {sessions?.length
