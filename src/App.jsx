@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/authcontext";
 import Login from "./pages/auth/login";
-import Register from "./pages/auth/Register";
+import Register from "./pages/auth/register";
 import Home from "./pages/home/home";
 import Workouts from "./pages/workouts/workouts";
 import Analytics from "./pages/analytics/analytics";
