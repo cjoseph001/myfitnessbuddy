@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { API_BASE_URL } from "../../config/api";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -66,12 +67,12 @@ export default function Login() {
         </form>
         <p className="mt-6 text-center text-gray-500 text-sm">
           Don’t have an account?{" "}
-          <a
-            href="/register"
+          <Link
+            to="/register"
             className="text-blue-500 font-medium hover:underline"
           >
             Register
-          </a>
+          </Link>
         </p>
       </div>
     </div>
