@@ -40,7 +40,7 @@ export default function RangeSelector({ range, onChange, onOpenCustom }) {
         className="flex items-center gap-2.5 text-sm font-medium pl-3 pr-2 py-1.5 rounded-lg bg-white text-blue-700 border border-gray-200 shadow-sm hover:bg-blue-50 hover:border-blue-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-200 justify-center"
       >
         <CalendarDays className="w-5 h-5" />
-        <span>Select Dates</span>
+        <span>Select Period</span>
         <ChevronDown className="w-5 h-5" />
       </button>
     </div>

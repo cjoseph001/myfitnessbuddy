@@ -23,7 +23,7 @@ const rangeLabelMap = {
   month: "Last 30 Days",
   year: "Last Year",
   custom: "the Selected Period",
-  "": "All Time",
+  "": "All Period",
 };
 
 export default function Analytics() {
@@ -277,11 +277,7 @@ export default function Analytics() {
             </>
           )}
         </>
-      ) : (
-        <div className="py-8 text-center text-gray-500">
-          No data available for the selected period.
-        </div>
-      )}
+      ) : null}
 
       {showCustomModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
