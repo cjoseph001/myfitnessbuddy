@@ -1,10 +1,13 @@
 import { createPool } from "mysql2/promise";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const pool = createPool({
-  host: "localhost",
-  user: "root",
-  password: "Kuda2815",
-  database: "myfitnessbuddy",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASS || "Kuda2815",
+  database: process.env.DB_NAME || "myfitnessbuddy",
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
