@@ -7,6 +7,7 @@ import MuscleWorkedTable from "../../components/analytics/muscleworkedtable";
 import ExerciseWorkedTable from "../../components/analytics/exerciseworkedtable";
 import ExercisePerformance from "../../components/analytics/exerciseperformance";
 import MuscleDistribution from "../../components/analytics/muscledistribution";
+import { API_BASE_URL } from "../../config/api";
 
 function formatPretty(iso) {
   if (!iso) return "";
@@ -39,7 +40,7 @@ export default function Analytics() {
   const [activeTab, setActiveTab] = useState("overview");
 
   const buildUrl = () => {
-    const base = `http://localhost:5001/api/analytics/sessions`;
+    const base = `${API_BASE_URL}/api/analytics/sessions`;
     const params = new URLSearchParams();
     params.set("user_id", user.id);
     if (range) params.set("range", range);

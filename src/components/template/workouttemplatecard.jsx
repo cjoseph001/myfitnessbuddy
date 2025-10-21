@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { API_BASE_URL } from "../../config/api";
 
 export default function WorkoutTemplateCard({ template, onDelete }) {
   const [expanded, setExpanded] = useState(false);
@@ -10,9 +11,7 @@ export default function WorkoutTemplateCard({ template, onDelete }) {
     const fetchExercises = async () => {
       setLoading(true);
       try {
-        const res = await fetch(
-          `http://localhost:5001/api/templates/${template.id}`
-        );
+        const res = await fetch(`${API_BASE_URL}/api/templates/${template.id}`);
         const data = await res.json();
         setExercises(data || []);
       } catch (err) {

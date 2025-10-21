@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/authcontext";
 import { FaCalendarAlt, FaClock } from "react-icons/fa";
 import WorkoutTemplateForm from "../../components/template/workouttemplateform";
 import WorkoutTemplatesSection from "../../components/template/workouttemplatesection";
+import { API_BASE_URL } from "../../config/api";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!user?.id) return;
-    fetch(`http://localhost:5001/api/sessions/recent?user_id=${user.id}`)
+    fetch(`${API_BASE_URL}/api/sessions/recent?user_id=${user.id}`)
       .then((res) => res.json())
       .then(setRecentWorkouts)
       .catch(console.error);
@@ -25,14 +26,14 @@ export default function Home() {
 
   useEffect(() => {
     if (!user?.id) return;
-    fetch(`http://localhost:5001/api/templates?user_id=${user.id}`)
+    fetch(`${API_BASE_URL}/api/templates?user_id=${user.id}`)
       .then((res) => res.json())
       .then(setTemplates)
       .catch(console.error);
   }, [user]);
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/exercises")
+    fetch(`${API_BASE_URL}/api/exercises`)
       .then((res) => res.json())
       .then(setExerciseList)
       .catch(console.error);
@@ -46,7 +47,7 @@ export default function Home() {
 
   const handleDeleteTemplate = async (id) => {
     try {
-      await fetch(`http://localhost:5001/api/templates/${id}`, {
+      await fetch(`${API_BASE_URL}/api/templates/${id}`, {
         method: "DELETE",
       });
       setTemplates((prev) => prev.filter((t) => t.id !== id));
@@ -68,7 +69,7 @@ export default function Home() {
         })),
       };
 
-      const res = await fetch("http://localhost:5001/api/templates", {
+      const res = await fetch(`${API_BASE_URL}/api/templates`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

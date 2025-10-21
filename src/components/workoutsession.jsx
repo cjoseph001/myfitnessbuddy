@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaCalendarAlt, FaClock, FaTrash } from "react-icons/fa";
 import WorkoutTable from "./workouttable";
 import AddExerciseModal from "./addexercise";
+import { API_BASE_URL } from "../config/api";
 
 export default function WorkoutSessionCard({
   session,
@@ -39,14 +40,11 @@ export default function WorkoutSessionCard({
         });
       });
 
-      const res = await fetch(
-        `http://localhost:5001/api/sessions/id/${session.id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }
-      );
+      const res = await fetch(`${API_BASE_URL}/api/sessions/id/${session.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
       const data = await res.json();
       if (data.success) {
@@ -181,7 +179,7 @@ export default function WorkoutSessionCard({
                         )
                       ) {
                         const res = await fetch(
-                          `http://localhost:5001/api/sessions/id/${session.id}`,
+                          `${API_BASE_URL}/api/sessions/id/${session.id}`,
                           { method: "DELETE" }
                         );
                         const data = await res.json();

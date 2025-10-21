@@ -13,6 +13,7 @@ import {
   Line,
   CartesianGrid,
 } from "recharts";
+import { API_BASE_URL } from "../../config/api";
 
 export default function Trends() {
   const { user } = useContext(AuthContext);
@@ -47,7 +48,7 @@ export default function Trends() {
     if (!user?.id) return;
     setLoading(true);
 
-    fetch(`http://localhost:5001/api/trends/weekly?userId=${user.id}`)
+    fetch(`${API_BASE_URL}/api/trends/weekly?userId=${user.id}`)
       .then((res) => res.json())
       .then((data) => {
         const wData = data.weeklyData || [];
@@ -60,7 +61,7 @@ export default function Trends() {
       })
       .catch(console.error);
 
-    fetch(`http://localhost:5001/api/trends/monthly?userId=${user.id}`)
+    fetch(`${API_BASE_URL}/api/trends/monthly?userId=${user.id}`)
       .then((res) => res.json())
       .then((data) => {
         const mData = data.monthlyData || [];

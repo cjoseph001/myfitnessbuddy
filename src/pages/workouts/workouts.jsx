@@ -4,6 +4,7 @@ import Calendar from "../../components/calendar";
 import { AuthContext } from "../../context/authcontext";
 import WorkoutSessionCard from "../../components/workoutsession";
 import AddWorkoutForm from "../../components/addworkoutform";
+import { API_BASE_URL } from "../../config/api";
 
 export default function Workouts() {
   const { date } = useParams();
@@ -38,7 +39,7 @@ export default function Workouts() {
   useEffect(() => {
     const fetchExercises = async () => {
       try {
-        const res = await fetch("http://localhost:5001/api/exercises");
+        const res = await fetch(`${API_BASE_URL}/api/exercises`);
         const data = await res.json();
         setExerciseList(data);
       } catch (err) {
@@ -56,7 +57,7 @@ export default function Workouts() {
 
     try {
       const res = await fetch(
-        `http://localhost:5001/api/sessions/date/${yyyy}${mm}${dd}?user_id=${user.id}`
+        `${API_BASE_URL}/api/sessions/date/${yyyy}${mm}${dd}?user_id=${user.id}`
       );
       const data = await res.json();
       setSessions(data);
@@ -212,7 +213,7 @@ export default function Workouts() {
     };
 
     try {
-      const res = await fetch("http://localhost:5001/api/sessions", {
+      const res = await fetch(`${API_BASE_URL}/api/sessions`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

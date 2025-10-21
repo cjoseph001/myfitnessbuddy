@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ExerciseSelector from "./exerciseselector";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { API_BASE_URL } from "../config/api";
 
 export default function AddWorkoutForm({
   workoutName,
@@ -34,14 +35,14 @@ export default function AddWorkoutForm({
       const fetchTemplates = async () => {
         try {
           const res = await fetch(
-            `http://localhost:5001/api/templates?user_id=${user.id}`
+            `${API_BASE_URL}/api/templates?user_id=${user.id}`
           );
           const templatesData = await res.json();
 
           const templatesWithExercises = await Promise.all(
             templatesData.map(async (t) => {
               const resEx = await fetch(
-                `http://localhost:5001/api/templates/${t.id}`
+                `${API_BASE_URL}/api/templates/${t.id}`
               );
               const exercises = await resEx.json();
               return { ...t, exercises };
