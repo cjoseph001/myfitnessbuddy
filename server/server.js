@@ -6,25 +6,11 @@ import { hash } from "bcrypt";
 import analyticRouter from "./analytics.js";
 import trendsRouter from "./trends.js";
 import templateRouter from "./template.js";
-import pool from "./db.js";
-
-pool
-  .getConnection()
-  .then((conn) => {
-    console.log("DB connected successfully");
-    conn.release();
-  })
-  .catch((err) => console.error("DB connection error:", err));
 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-const corsOptions = {
-  origin: "https://myfitnessbuddy-delta.vercel.app",
-  credentials: true,
-};
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 app.post("/api/login", async (req, res) => {
@@ -60,7 +46,6 @@ app.post("/api/login", async (req, res) => {
 });
 
 app.post("/api/register", async (req, res) => {
-  console.log("[REGISTER] Body:", req.body);
   const { email, password } = req.body;
 
   if (!email || !password)
