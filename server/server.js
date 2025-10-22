@@ -6,6 +6,15 @@ import { hash } from "bcrypt";
 import analyticRouter from "./analytics.js";
 import trendsRouter from "./trends.js";
 import templateRouter from "./template.js";
+import pool from "./db.js";
+
+pool
+  .getConnection()
+  .then((conn) => {
+    console.log("DB connected successfully");
+    conn.release();
+  })
+  .catch((err) => console.error("DB connection error:", err));
 
 const app = express();
 const PORT = process.env.PORT || 5001;
