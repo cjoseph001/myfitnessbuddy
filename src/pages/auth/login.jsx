@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { API_BASE_URL } from "../../config/api";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/authcontext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
+  const { login } = useContext(AuthContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -21,12 +22,13 @@ export default function Login() {
       const data = await res.json();
 
       if (res.ok) {
-        localStorage.setItem("user", JSON.stringify(data.user));
+        login(data.user);
         navigate("/home");
       } else {
-        setError(data.error);
+        setError(data.error || "Invalid email or password");
       }
     } catch (err) {
+      console.error(err);
       setError("Server error");
     }
   };
