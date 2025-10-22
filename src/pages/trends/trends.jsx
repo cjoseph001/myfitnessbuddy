@@ -14,8 +14,10 @@ import {
   CartesianGrid,
 } from "recharts";
 import { API_BASE_URL } from "../../config/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Trends() {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [weeklyData, setWeeklyData] = useState([]);
   const [monthlyData, setMonthlyData] = useState([]);
@@ -346,12 +348,10 @@ export default function Trends() {
       {loading ? (
         <div className="py-12 text-center text-gray-500">Loading...</div>
       ) : weeklyData.length === 0 && monthlyData.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-16 px-6 text-center bg-gradient-to-tr from-blue-50 to-white border border-blue-100 rounded-2xl shadow-md relative overflow-hidden">
-          {/* Decorative Circle in Background */}
+        <div className="flex flex-col items-center justify-center py-16 px-6 text-center bg-gradient-to-tr from-blue-50 to-white border border-blue-100 rounded-2xl shadow-md relative overflow-hidden mt-12">
           <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-100 rounded-full opacity-30"></div>
           <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20"></div>
 
-          {/* Icon */}
           <div className="flex items-center justify-center w-14 h-14 mb-4 bg-blue-100 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -369,21 +369,18 @@ export default function Trends() {
             </svg>
           </div>
 
-          {/* Headline */}
           <h3 className="text-lg font-semibold text-gray-800 mb-2">
             No Workouts Found
           </h3>
 
-          {/* Description */}
-          <p className="text-sm text-gray-500 mb-6 max-w-sm">
+          <p className="text-sm text-gray-500 mb-9 max-w-sm">
             You have not logged any workouts yet. Log your workout daily to view
             trends.
           </p>
 
-          {/* Button */}
           <button
-            onClick={() => (window.location.href = "/workouts")}
-            className="px-4.5 py-2.5 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold shadow-lg hover:from-blue-600 hover:to-blue-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0.5 active:shadow-md"
+            onClick={() => navigate("/workouts")}
+            className="text-sm px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold shadow-lg hover:from-blue-600 hover:to-blue-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0.5 active:shadow-md"
           >
             Create a Workout Today
           </button>

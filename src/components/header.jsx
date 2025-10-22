@@ -65,29 +65,33 @@ export default function Header() {
           mobileOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="bg-[#1e4fd9] border-t border-white/10 px-2 pb-5 pt-2.5 space-y-2">
-          {[
-            { label: "Home", path: "/home" },
-            { label: "Workouts", path: "/workouts" },
-            { label: "Analytics", path: "/analytics" },
-            { label: "Trends", path: "/trends" },
-          ].map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              onClick={() => setMobileOpen(false)}
-              className="block py-1 px-3.5 rounded-md hover:bg-white/15 active:bg-white/25 transition-all"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav className="bg-[#1e4fd9] border-t border-white/10 px-2.5 pb-5 pt-2.5 flex flex-col justify-between h-full">
+          <div className="space-y-2">
+            {[
+              { label: "Home", path: "/home" },
+              { label: "Workouts", path: "/workouts" },
+              { label: "Analytics", path: "/analytics" },
+              { label: "Trends", path: "/trends" },
+            ].map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setMobileOpen(false)}
+                className="block py-1 px-3.5 rounded-md hover:bg-white/15 active:bg-white/25 transition-all text-left"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
 
-          <button
-            onClick={logout}
-            className="mt-2 w-full bg-white/20 hover:bg-white/30 active:bg-white/40 px-3 py-2 rounded-xl text-white font-medium transition-all"
-          >
-            Logout
-          </button>
+          <div className="flex justify-center mt-4">
+            <button
+              onClick={logout}
+              className="w-[95%] bg-white/20 hover:bg-white/30 active:bg-white/40 px-3 py-2 rounded-xl text-white font-medium text-center transition-all"
+            >
+              Logout
+            </button>
+          </div>
         </nav>
       </div>
     </header>

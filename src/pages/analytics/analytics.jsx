@@ -8,6 +8,7 @@ import ExerciseWorkedTable from "../../components/analytics/exerciseworkedtable"
 import ExercisePerformance from "../../components/analytics/exerciseperformance";
 import MuscleDistribution from "../../components/analytics/muscledistribution";
 import { API_BASE_URL } from "../../config/api";
+import { useNavigate } from "react-router-dom";
 
 function formatPretty(iso) {
   if (!iso) return "";
@@ -38,6 +39,7 @@ export default function Analytics() {
   const [tempStart, setTempStart] = useState("");
   const [tempEnd, setTempEnd] = useState("");
   const [activeTab, setActiveTab] = useState("overview");
+  const navigate = useNavigate();
 
   const buildUrl = () => {
     const base = `${API_BASE_URL}/api/analytics/sessions`;
@@ -166,7 +168,7 @@ export default function Analytics() {
         onOpenCustom={handleOpenCustom}
       />
 
-      <div className="mb-4 mt-3">
+      <div className="mb-5.5 mt-3">
         <h3 className="text-lg font-semibold text-gray-800">
           Workout Analytics for{" "}
           <span className="text-blue-600">{titleLabel}</span>
@@ -207,14 +209,14 @@ export default function Analytics() {
                 No Workouts Found
               </h3>
 
-              <p className="text-sm text-gray-500 mb-6 max-w-sm">
+              <p className="text-sm text-gray-500 mb-9 max-w-sm">
                 You have not logged any workouts yet. Track your sessions to
                 unlock detailed analytics and performance insights.
               </p>
 
               <button
-                onClick={() => (window.location.href = "/workouts")}
-                className="px-4.5 py-2.5 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold shadow-lg hover:from-blue-600 hover:to-blue-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0.5 active:shadow-md"
+                onClick={() => navigate("/workouts")}
+                className="text-sm px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold shadow-lg hover:from-blue-600 hover:to-blue-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0.5 active:shadow-md"
               >
                 Create a Workout Today
               </button>
