@@ -26,7 +26,7 @@ app.options("*", cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("✅ Backend is alive");
+  res.send("Backend is on");
 });
 
 app.post("/api/login", async (req, res) => {
