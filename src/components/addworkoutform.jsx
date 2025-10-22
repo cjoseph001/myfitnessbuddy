@@ -130,14 +130,14 @@ export default function AddWorkoutForm({
         <div className="md:col-span-3 flex flex-col sm:flex-row gap-2">
           <button
             onClick={() => setShowTemplateModal(true)}
-            className="font-semibold flex-1 text-sm bg-green-100 hover:bg-green-100 text-green-700 font-medium px-5 py-2.5 rounded-xl shadow-sm border border-green-100 hover:shadow-md hover:border-green-200 transition-all duration-200 transform hover:-translate-y-0.5"
+            className="font-semibold flex-1 text-sm bg-green-100 hover:bg-green-100 text-green-700 font-medium px-5 py-1.75 rounded-xl shadow-sm border border-green-100 hover:shadow-md hover:border-green-200 transition-all duration-200 transform hover:-translate-y-0.5"
           >
             Apply Template
           </button>
 
           <button
             onClick={() => setShowExerciseModal(true)}
-            className="font-semibold flex-1 text-sm bg-blue-100 hover:bg-blue-100 text-blue-700 font-medium px-5 py-2.5 rounded-xl shadow-sm border border-blue-100 hover:shadow-md hover:border-blue-200 transition-all duration-200 transform hover:-translate-y-0.5"
+            className="font-semibold flex-1 text-sm bg-blue-100 hover:bg-blue-100 text-blue-700 font-medium px-5 py-1.75 rounded-xl shadow-sm border border-blue-100 hover:shadow-md hover:border-blue-200 transition-all duration-200 transform hover:-translate-y-0.5"
           >
             Select Exercises
           </button>

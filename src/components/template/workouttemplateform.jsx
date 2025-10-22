@@ -110,7 +110,7 @@ export default function WorkoutTemplateForm({ exerciseList, onClose, onSave }) {
              active:bg-blue-300 
              border border-blue-200
              rounded-xl shadow-sm hover:shadow-md
-             py-2.5 transition-all duration-200"
+             py-1.75 transition-all duration-200"
       >
         Select Exercises
       </button>
