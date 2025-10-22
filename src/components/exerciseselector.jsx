@@ -127,7 +127,7 @@ export default function ExerciseSelector({
 
         <div className="flex justify-between items-center p-4 sticky">
           {selectedCount > 0 ? (
-            <p className="pl-2 text-sm font-semibold text-blue-600">
+            <p className="pl-2 text-xs sm:text-sm font-semibold text-blue-600">
               {selectedCount} exercise{selectedCount !== 1 ? "s" : ""} selected
             </p>
           ) : (
@@ -138,14 +138,14 @@ export default function ExerciseSelector({
             {selectedCount > 0 && (
               <button
                 onClick={onConfirm}
-                className="px-5 py-2 text-sm rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium shadow-md hover:shadow-lg transition-all duration-200"
+                className="px-4 py-1.5 text-sm rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium shadow-md hover:shadow-lg transition-all duration-200"
               >
-                Confirm Selection
+                Confirm
               </button>
             )}
             <button
               onClick={onCancel}
-              className="px-4 py-2 text-sm rounded-2xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium shadow-sm hover:shadow-md transition-all duration-200"
+              className="px-4 py-1.5 text-sm rounded-2xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium shadow-sm hover:shadow-md transition-all duration-200"
             >
               Cancel
             </button>

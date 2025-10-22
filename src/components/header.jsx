@@ -70,6 +70,7 @@ export default function Header() {
             { label: "Home", path: "/home" },
             { label: "Workouts", path: "/workouts" },
             { label: "Analytics", path: "/analytics" },
+            { label: "Trends", path: "/trends" },
           ].map((link) => (
             <Link
               key={link.path}
