@@ -17,24 +17,17 @@ export default function Login() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
-        credentials: "include", // ✅ allows cookies/session if needed
       });
-
       const data = await res.json();
 
-      if (res.ok && data?.user) {
+      if (res.ok) {
         localStorage.setItem("user", JSON.stringify(data.user));
-
-        // ✅ Delay slightly to ensure state updates are complete
-        setTimeout(() => {
-          navigate("/home", { replace: true });
-        }, 100);
+        navigate("/home");
       } else {
-        setError(data?.error || "Invalid credentials");
+        setError(data.error);
       }
     } catch (err) {
-      console.error(err);
-      setError("Server error, please try again later.");
+      setError("Server error");
     }
   };
 
@@ -44,7 +37,6 @@ export default function Login() {
         <h2 className="text-xl font-bold mb-8 text-center text-gray-800 tracking-wide">
           Login to <span className="text-blue-500">MyFitnessBuddy</span>
         </h2>
-
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <input
@@ -56,7 +48,6 @@ export default function Login() {
               required
             />
           </div>
-
           <div>
             <input
               type="password"
@@ -67,9 +58,7 @@ export default function Login() {
               required
             />
           </div>
-
           {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-
           <button
             type="submit"
             className="w-full py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-xl shadow-md hover:from-blue-600 hover:to-blue-700 transition"
@@ -77,7 +66,6 @@ export default function Login() {
             Login
           </button>
         </form>
-
         <p className="mt-6 text-center text-gray-500 text-sm">
           Don’t have an account?{" "}
           <Link
