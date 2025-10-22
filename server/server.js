@@ -19,13 +19,12 @@ pool
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-app.use(
-  cors({
-    origin: ["https://myfitnessbuddy-delta.vercel.app"],
-    credentials: true,
-  })
-);
-
+const corsOptions = {
+  origin: "https://myfitnessbuddy-delta.vercel.app",
+  credentials: true,
+};
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json());
 
 app.post("/api/login", async (req, res) => {
