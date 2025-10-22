@@ -37,7 +37,6 @@ app.post("/api/login", async (req, res) => {
   }
 
   try {
-    // 1️⃣ Find user by email
     const [user] = await query(
       "SELECT id, email, password_hash FROM users WHERE email = ?",
       [email]
@@ -47,13 +46,11 @@ app.post("/api/login", async (req, res) => {
       return res.status(400).json({ error: "Invalid credentials" });
     }
 
-    // 2️⃣ Compare password with hashed password
     const isMatch = await compare(password, user.password_hash);
     if (!isMatch) {
       return res.status(400).json({ error: "Invalid credentials" });
     }
 
-    // 3️⃣ Return user info (without password) to frontend
     res.json({ user: { id: user.id, email: user.email } });
   } catch (err) {
     console.error("Login error:", err);

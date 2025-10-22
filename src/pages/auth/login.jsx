@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { API_BASE_URL } from "../../config/api";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../context/authcontext";
 
 export default function Login() {
-  const { setUser } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // ✅ added here
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,7 +22,6 @@ export default function Login() {
 
       if (res.ok) {
         localStorage.setItem("user", JSON.stringify(data.user));
-        setUser(data.user);
         navigate("/home");
       } else {
         setError(data.error);
