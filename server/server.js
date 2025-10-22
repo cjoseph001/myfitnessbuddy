@@ -1,3 +1,5 @@
+console.log("PORT ENV:", process.env.PORT);
+
 import express from "express";
 import cors from "cors";
 import { query } from "./db.js";
