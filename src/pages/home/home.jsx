@@ -160,7 +160,7 @@ export default function Home() {
       )}
 
       {/* Workout Templates Section */}
-      <section className="mb-7 w-full max-w-none">
+      <section className="mb-7.5 w-full max-w-none">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">Workout Templates</h2>
           {templates.length > 0 && (
@@ -245,6 +245,9 @@ export default function Home() {
           </>
         )}
       </section>
+
+      {/* Divider */}
+      <div className="my-4 border-t border-gray-300"></div>
 
       <section>
         <h2 className="text-lg font-semibold">Recent Workouts</h2>
