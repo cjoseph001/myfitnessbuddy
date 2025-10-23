@@ -62,7 +62,7 @@ export default function ExerciseSelector({
               placeholder="Search exercises by name, muscle, or equipment..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-transparent focus:outline-none text-sm text-gray-700"
+              className="w-full bg-transparent focus:outline-none text-base text-gray-700"
             />
           </div>
 

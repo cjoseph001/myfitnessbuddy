@@ -94,7 +94,7 @@ export default function AddWorkoutForm({
           />
         </div>
 
-        <div className="relative">
+        <div className="relative w-full">
           <label
             htmlFor="startTime"
             className="block text-sm text-gray-600 mb-1.5"
