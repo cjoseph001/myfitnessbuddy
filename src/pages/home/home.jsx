@@ -160,7 +160,7 @@ export default function Home() {
       )}
 
       {/* Workout Templates Section */}
-      <section className="mb-7.5 w-full max-w-none">
+      <section className="mb-9 w-full max-w-none">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">Workout Templates</h2>
           {templates.length > 0 && (
@@ -246,8 +246,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* Divider */}
-      <div className="my-4 border-t border-gray-300"></div>
+      <div className="my-5 border-t border-gray-300"></div>
 
       <section>
         <h2 className="text-lg font-semibold">Recent Workouts</h2>
@@ -320,7 +319,6 @@ export default function Home() {
                       <span> ...+{session.exercises.length - 2}</span>
                     )}
                   </div>
-                  {/* Stats Card */}
                   <div className="grid grid-cols-4 bg-gradient-to-r from-blue-50 via-gray-50 to-blue-50 border border-blue-100 rounded-2xl px-4 py-2.5 text-center text-gray-800 mb-3 shadow-sm">
                     {[
                       { label: "Exercises", value: summary.exerciseCount },
