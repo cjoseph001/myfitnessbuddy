@@ -204,7 +204,7 @@ export default function Home() {
 
         {templates.length > 0 && (
           <>
-            <p className="text-gray-500 text-sm mb-2 mt-2">
+            <p className="text-gray-500 text-sm mt-3">
               You currently have {templates.length} template
               {templates.length !== 1 ? "s" : ""}. Click add new to create
               template.
