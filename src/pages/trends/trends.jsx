@@ -752,8 +752,8 @@ export default function Trends() {
             {tableData.length > 0 ? (
               <PaginatedTableWrapper data={tableData} rowsPerPage={10}>
                 {(currentData) => (
-                  <>
-                    <table className="min-w-full border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                  <div className="overflow-x-auto rounded-lg shadow-sm">
+                    <table className="min-w-full border border-gray-200">
                       <thead className="bg-blue-50">
                         <tr>
                           <th className="px-5 py-3 text-left text-xs font-bold text-blue-800 uppercase tracking-wider">
@@ -802,7 +802,7 @@ export default function Trends() {
                         ))}
                       </tbody>
                     </table>
-                  </>
+                  </div>
                 )}
               </PaginatedTableWrapper>
             ) : (
