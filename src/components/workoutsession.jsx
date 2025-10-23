@@ -127,7 +127,7 @@ export default function WorkoutSessionCard({
   };
 
   return (
-    <div className="max-w-6xl mx-auto relative bg-white rounded-2xl px-5 py-4.5 mb-5 shadow-sm transition-all duration-300 hover:shadow-md border border-gray-200">
+    <div className="max-w-6xl mx-auto relative bg-white rounded-2xl px-5 pt-3 pb-4.5 mb-5 shadow-sm transition-all duration-300 hover:shadow-md border border-gray-200">
       <div className="relative z-10">
         <div className="flex flex-col sm:flex-row justify-between items-start mb-3 gap-2">
           <div className="flex-1">
@@ -135,7 +135,7 @@ export default function WorkoutSessionCard({
               {isEditing ? "Edit Workout" : session.name}
             </h3>
             {!isEditing && (
-              <div className="mt-1 text-sm text-gray-500 font-medium">
+              <div className="mb-1 text-sm text-gray-500 font-medium">
                 Session {session.session_no || 1}
               </div>
             )}
@@ -159,7 +159,7 @@ export default function WorkoutSessionCard({
               </>
             ) : (
               <>
-                <div className="flex gap-2.5">
+                <div className="flex gap-2 mb-1">
                   <button
                     onClick={() => setIsEditing(true)}
                     className="relative group px-3.5 py-1.5 text-xs font-semibold rounded-lg 
@@ -443,7 +443,7 @@ export default function WorkoutSessionCard({
           <div className="mt-4 flex justify-center">
             <button
               onClick={() => setShowAddExercise(true)}
-              className="px-4 sm:px-5 py-1.5 sm:py-2 bg-blue-600 text-white font-semibold text-xs sm:text-sm rounded-lg shadow-md hover:bg-blue-500 transition-all duration-200"
+              className="px-4 sm:px-5 py-1.5 sm:py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold text-xs sm:text-sm rounded-2xl shadow-md hover:from-blue-700 hover:to-blue-800 transition-all duration-200"
             >
               + Add New Exercise
             </button>
@@ -478,7 +478,7 @@ export default function WorkoutSessionCard({
           <div className="mt-4 flex justify-center">
             <button
               onClick={() => setExpanded(!expanded)}
-              className="flex items-center px-3 py-1 text-xs font-medium text-blue-600 bg-blue-50 rounded-full shadow-sm hover:bg-blue-100 hover:text-blue-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              className="flex items-center px-3 py-1 text-xs font-medium text-blue-700 bg-blue-50 rounded-full shadow-sm hover:bg-blue-100 hover:text-blue-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-100"
             >
               <span className="mr-2 font-semibold">
                 {expanded ? "Hide Details" : "View Details"}
@@ -489,7 +489,7 @@ export default function WorkoutSessionCard({
                 }`}
               >
                 <svg
-                  className="w-3 h-3 sm:w-4 sm:h-4"
+                  className="w-4 h-4 sm:w-4 sm:h-4"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"

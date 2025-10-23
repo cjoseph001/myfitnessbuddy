@@ -246,7 +246,6 @@ export default function Home() {
         )}
       </section>
 
-      {/* Recent Workouts Section */}
       <section>
         <h2 className="text-lg font-semibold">Recent Workouts</h2>
         {recentWorkouts.length > 0 && (
@@ -290,7 +289,7 @@ export default function Home() {
               return (
                 <div
                   key={session.id}
-                  className="bg-white border border-gray-200 rounded-2xl pt-3 pb-3.5 px-4 shadow hover:shadow-lg transition-all duration-200 flex flex-col"
+                  className="bg-white border border-gray-300 rounded-2xl pt-2.5 pb-3.5 px-4 shadow hover:shadow-xl transition-all duration-200 flex flex-col"
                 >
                   <h3 className="text-base font-semibold text-gray-800 mb-1.5 truncate">
                     {session.name}
@@ -305,7 +304,7 @@ export default function Home() {
                     <FaClock className="text-blue-400 w-3 h-3" />
                     <span>{session.start_time}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-gray-500 mb-3 overflow-hidden whitespace-nowrap text-ellipsis">
+                  <div className="flex items-center gap-1 text-xs text-gray-500 mb-4 overflow-hidden whitespace-nowrap text-ellipsis">
                     {session.exercises.slice(0, 2).map((ex, idx) => (
                       <span key={idx}>
                         {ex.session_exercise_name}

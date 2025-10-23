@@ -74,8 +74,8 @@ export default function AddWorkoutForm({
   };
 
   return (
-    <div className="bg-white rounded-2xl px-5 py-4 mb-7.5 border border-blue-200 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
-      <h2 className="text-lg font-bold mb-6 text-gray-900">Add New Workout</h2>
+    <div className="bg-white rounded-2xl px-5 pt-3 pb-5 mb-7 border border-blue-200 shadow-sm hover:shadow-md transition-shadow duration-300 ease-in-out">
+      <h2 className="text-lg font-bold mb-4 text-gray-900">Create Workout</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 items-end">
         <div className="md:col-span-3">
           <label
