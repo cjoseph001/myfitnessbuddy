@@ -148,19 +148,34 @@ export default function Home() {
       </div>
 
       {recentWorkouts.length > 0 && (
-        <div className="flex gap-4 mb-5 flex-wrap">
+        <div className="flex gap-4 mb-6 flex-wrap">
           <button
             onClick={handleAddWorkout}
-            className="px-4 py-2 text-base text-white font-bold rounded-2xl 
-              bg-gradient-to-r from-blue-500 to-blue-600 shadow hover:from-blue-600 hover:to-blue-700 hover:shadow-md transition-all duration-200"
+            className="relative inline-flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white font-semibold text-base rounded-full shadow-xl hover:shadow-xl transform transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 overflow-hidden text-sm"
           >
-            Create New Workout
+            <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 opacity-0 hover:opacity-20 transition-opacity duration-300 rounded-full"></span>
+            <span className="relative flex items-center gap-2">
+              Create New Workout
+              <svg
+                className="w-4 h-4 transform transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 12h14M12 5l7 7-7 7"
+                />
+              </svg>
+            </span>
           </button>
         </div>
       )}
 
       {/* Workout Templates Section */}
-      <section className="mb-9 w-full max-w-none">
+      <section className="mb-10 w-full max-w-none">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">Workout Templates</h2>
           {templates.length > 0 && (
