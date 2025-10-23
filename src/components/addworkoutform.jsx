@@ -89,12 +89,12 @@ export default function AddWorkoutForm({
             id="workoutName"
             value={workoutName}
             onChange={(e) => setWorkoutName(e.target.value)}
-            className="w-full text-base border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+            className="w-full text-base border border-gray-300 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
             placeholder="e.g., Push Workout"
           />
         </div>
 
-        <div className="relative w-full">
+        <div className="relative w-full min-w-0">
           <label
             htmlFor="startTime"
             className="block text-sm text-gray-600 mb-1.5"
@@ -106,7 +106,7 @@ export default function AddWorkoutForm({
             id="startTime"
             value={startTime}
             onChange={(e) => setStartTime(e.target.value)}
-            className="w-full border border-gray-300 text-base rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+            className="w-full border border-gray-300 text-base rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
           />
         </div>
 
@@ -122,7 +122,7 @@ export default function AddWorkoutForm({
             id="duration"
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
-            className="w-full border border-gray-300 text-base rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+            className="w-full border border-gray-300 text-base rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
             placeholder="e.g., 45"
           />
         </div>
