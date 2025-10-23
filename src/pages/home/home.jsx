@@ -166,7 +166,7 @@ export default function Home() {
           {templates.length > 0 && (
             <button
               onClick={() => setShowTemplateForm(true)}
-              className="px-2.5 py-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-medium rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+              className="px-2 py-1.25 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-medium rounded-2xl shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               + Add new
             </button>
@@ -204,7 +204,7 @@ export default function Home() {
 
         {templates.length > 0 && (
           <>
-            <p className="text-gray-500 text-sm mb-2">
+            <p className="text-gray-500 text-sm mb-2 mt-2">
               You currently have {templates.length} template
               {templates.length !== 1 ? "s" : ""}. Click add new to create
               template.
