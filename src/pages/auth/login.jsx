@@ -67,7 +67,15 @@ export default function Login() {
           >
             Login
           </button>
+          <p className="text-center text-gray-500 text-sm">
+            - For Demo -
+            <br />
+            <span className="font-semibold">Email:</span> sample@email.com
+            <br />
+            <span className="font-semibold">Password:</span> sample
+          </p>
         </form>
+
         <p className="mt-6 text-center text-gray-500 text-sm">
           Don’t have an account?{" "}
           <Link
