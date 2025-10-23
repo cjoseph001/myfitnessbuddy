@@ -89,7 +89,7 @@ export default function AddWorkoutForm({
             id="workoutName"
             value={workoutName}
             onChange={(e) => setWorkoutName(e.target.value)}
-            className="w-full text-sm border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+            className="w-full text-base border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
             placeholder="e.g., Push Workout"
           />
         </div>
@@ -106,7 +106,7 @@ export default function AddWorkoutForm({
             id="startTime"
             value={startTime}
             onChange={(e) => setStartTime(e.target.value)}
-            className="w-full border border-gray-300 text-sm rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+            className="w-full border border-gray-300 text-base rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
           />
         </div>
 
@@ -122,7 +122,7 @@ export default function AddWorkoutForm({
             id="duration"
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
-            className="w-full border border-gray-300 text-sm rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+            className="w-full border border-gray-300 text-base rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
             placeholder="e.g., 45"
           />
         </div>
@@ -153,18 +153,18 @@ export default function AddWorkoutForm({
               <h3 className="text-base font-semibold text-gray-900 mb-3.5">
                 {ex.name}
               </h3>
-              <div className="flex gap-2.5">
+              <div className="flex gap-1.5">
                 <button
                   onClick={() => addSet(exIdx)}
-                  className="text-sm px-3.5 py-1.5 bg-blue-50 text-blue-700 rounded-full shadow-sm hover:bg-blue-100 hover:shadow-md transition flex items-center justify-center"
+                  className="text-xs px-2 py-1.5 bg-blue-50 text-blue-700 rounded-full shadow-sm hover:bg-blue-100 hover:shadow-md transition flex items-center justify-center"
                 >
-                  + Add Set
+                  + Set
                 </button>
                 <button
                   onClick={() => removeExercise(ex.exercise_id)}
-                  className="text-sm px-3.5 py-1.5 bg-red-50 text-red-700 rounded-full shadow-sm hover:bg-red-100 hover:shadow-md transition flex items-center justify-center"
+                  className="text-xs px-2.5 py-1.5 bg-red-50 text-red-700 rounded-full shadow-sm hover:bg-red-100 hover:shadow-md transition flex items-center justify-center"
                 >
-                  Remove
+                  Delete
                 </button>
               </div>
             </div>
@@ -213,7 +213,7 @@ export default function AddWorkoutForm({
                           onChange={(e) =>
                             updateSet(exIdx, sIdx, "weight", e.target.value)
                           }
-                          className="w-full rounded-lg px-3 py-1 border border-gray-200 focus:ring-1 focus:ring-blue-300 focus:outline-none transition"
+                          className="text-base w-full rounded-lg px-3 py-1 border border-gray-200 focus:ring-1 focus:ring-blue-300 focus:outline-none transition"
                         />
                       </td>
                       <td className="py-2 px-3 text-left">
@@ -224,7 +224,7 @@ export default function AddWorkoutForm({
                           onChange={(e) =>
                             updateSet(exIdx, sIdx, "reps", e.target.value)
                           }
-                          className="w-full rounded-lg px-3 py-1 border border-gray-200 focus:ring-1 focus:ring-blue-300 focus:outline-none transition"
+                          className="text-base w-full rounded-lg px-3 py-1 border border-gray-200 focus:ring-1 focus:ring-blue-300 focus:outline-none transition"
                         />
                       </td>
                       <td className="py-2 px-1 text-center">

@@ -140,7 +140,7 @@ export default function Analytics() {
   ];
 
   return (
-    <div className="px-8 py-5 max-w-6xl mx-auto">
+    <div className="px-4 sm:px-8 pt-3 pb-10 sm:pt-5 sm:pb-12 max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
         <div>
           <h2 className="text-xl font-semibold text-gray-900 tracking-tight">
@@ -293,7 +293,7 @@ export default function Analytics() {
               Select Period
             </h4>
             <div className="flex flex-col gap-4">
-              <label className="text-sm text-gray-600">
+              <label className="text-base text-gray-600">
                 Start date
                 <input
                   type="date"
@@ -303,7 +303,7 @@ export default function Analytics() {
                   className="w-full mt-1 px-3 py-2 rounded-xl bg-gray-50 focus:bg-white border border-gray-200 focus:border-blue-400 focus:ring-2 focus:ring-blue-100 transition-all outline-none"
                 />
               </label>
-              <label className="text-sm text-gray-600">
+              <label className="text-base text-gray-600">
                 End date
                 <input
                   type="date"

@@ -234,7 +234,7 @@ export default function Workouts() {
   };
 
   return (
-    <div className="px-8 py-5 max-w-6xl mx-auto">
+    <div className="px-4 sm:px-8 pt-3 pb-10 sm:pt-5 sm:pb-12 max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 mb-6">
         <div>
           <h2 className="text-xl font-semibold text-gray-900 tracking-tight">

@@ -97,7 +97,7 @@ export default function WorkoutTemplateForm({ exerciseList, onClose, onSave }) {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full text-sm border border-gray-300 rounded-xl px-3 py-2 
+          className="w-full text-base border border-gray-300 rounded-xl px-3 py-2 
                      focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
           placeholder="e.g., Push A"
         />
@@ -191,7 +191,7 @@ export default function WorkoutTemplateForm({ exerciseList, onClose, onSave }) {
                           }
                           onKeyDown={(e) => e.key === "-" && e.preventDefault()}
                           placeholder="-"
-                          className="w-full rounded-lg px-3 py-1.5 border border-gray-200 
+                          className="text-base w-full rounded-lg px-3 py-1.5 border border-gray-200 
                                      focus:ring-1 focus:ring-blue-400 focus:outline-none transition"
                         />
                       </td>
@@ -205,7 +205,7 @@ export default function WorkoutTemplateForm({ exerciseList, onClose, onSave }) {
                           }
                           onKeyDown={(e) => e.key === "-" && e.preventDefault()}
                           placeholder="-"
-                          className="w-full rounded-lg px-3 py-1.5 border border-gray-200 
+                          className="text-base w-full rounded-lg px-3 py-1.5 border border-gray-200 
                                      focus:ring-1 focus:ring-blue-400 focus:outline-none transition"
                         />
                       </td>
