@@ -1,4 +1,3 @@
-// MuscleDistributionChart.jsx
 import React from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
@@ -29,9 +28,9 @@ export default function MuscleDistributionChart({
           "#3b82f6",
         ],
         borderWidth: 2,
-        borderColor: "rgba(59, 130, 246, 0.3)", // light hint of blue
+        borderColor: "rgba(59, 130, 246, 0.3)",
         hoverOffset: 10,
-        borderRadius: 4, // subtle rounded edges
+        borderRadius: 4,
       },
     ],
   };

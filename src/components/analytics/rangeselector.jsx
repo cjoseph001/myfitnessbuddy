@@ -12,7 +12,6 @@ export default function RangeSelector({ range, onChange, onOpenCustom }) {
 
   return (
     <div className="w-full flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
-      {/* Range Options */}
       <div className="flex flex-nowrap overflow-x-auto scrollbar-hide gap-2 bg-white border border-gray-200/70 rounded-xl p-2 shadow-sm">
         {options.map((opt) => {
           const isActive = range === opt.value;
@@ -33,8 +32,6 @@ export default function RangeSelector({ range, onChange, onOpenCustom }) {
           );
         })}
       </div>
-
-      {/* Custom Range Button */}
       <button
         onClick={onOpenCustom}
         className="flex items-center gap-2.5 text-sm font-medium pl-3 pr-2 py-1.5 rounded-lg bg-white text-blue-700 border border-gray-200 shadow-sm hover:bg-blue-50 hover:border-blue-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-200 justify-center"

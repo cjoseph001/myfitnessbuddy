@@ -268,23 +268,26 @@ export default function AddWorkoutForm({
       )}
       {showTemplateModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl px-5 py-4 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-lg">
-            <h3 className="text-lg font-semibold mb-2 text-gray-900">
-              Select Workout Template
-            </h3>
-            {templates.length > 0 ? (
-              <p className="text-sm text-gray-500 mb-4">
-                Selecting a template will reset your current exercises and load
-                the new template’s exercises and sets.
-              </p>
-            ) : (
-              <p className="text-sm text-gray-500 mb-7.5">
-                {" "}
-                No template found.
-              </p>
-            )}
+          <div className="bg-white rounded-2xl px-5 py-4 max-w-2xl w-full max-h-[80vh] flex flex-col shadow-lg">
+            {/* Header */}
+            <div>
+              <h3 className="text-lg font-semibold mb-2 text-gray-900">
+                Select Workout Template
+              </h3>
+              {templates.length > 0 ? (
+                <p className="text-sm text-gray-500 mb-4">
+                  Selecting a template will reset your current exercises and
+                  load the new template’s exercises and sets.
+                </p>
+              ) : (
+                <p className="text-sm text-gray-500 mb-7.5">
+                  No template found.
+                </p>
+              )}
+            </div>
 
-            <div className="space-y-3 max-h-[70vh] overflow-y-auto pr-2">
+            {/* Scrollable content */}
+            <div className="flex-1 overflow-y-auto pr-2 space-y-3">
               {templates.length === 0 ? (
                 <>
                   <p className="text-gray-500 text-sm">
@@ -310,11 +313,11 @@ export default function AddWorkoutForm({
                     <div
                       key={t.id}
                       className={`p-4 rounded-xl cursor-pointer transition flex flex-col gap-2
-              ${
-                selectedTemplateId === t.id
-                  ? "border-2 border-blue-500 bg-blue-50"
-                  : "border border-gray-200 hover:border-gray-300"
-              }`}
+                  ${
+                    selectedTemplateId === t.id
+                      ? "border-2 border-blue-500 bg-blue-50"
+                      : "border border-gray-200 hover:border-gray-300"
+                  }`}
                       onClick={() => setSelectedTemplateId(t.id)}
                     >
                       <div>
@@ -386,6 +389,7 @@ export default function AddWorkoutForm({
               )}
             </div>
 
+            {/* Footer (always visible) */}
             <div className="flex justify-end gap-3 mt-5">
               <button
                 onClick={() => setShowTemplateModal(false)}

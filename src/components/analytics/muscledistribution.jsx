@@ -1,4 +1,3 @@
-// src/pages/analytics/MuscleDistribution.jsx
 import React, { useState, useMemo } from "react";
 import { ChevronDown } from "lucide-react";
 import SummaryCard from "../../components/analytics/summarycard";
@@ -10,7 +9,6 @@ export default function MuscleDistribution({ sessions = [] }) {
   const [showSessions, setShowSessions] = useState(false);
   const [sortOrder, setSortOrder] = useState("desc");
 
-  // --- Compute overall muscle stats ---
   const muscleStats = useMemo(() => {
     const result = {};
     let totalVolume = 0;
@@ -81,7 +79,6 @@ export default function MuscleDistribution({ sessions = [] }) {
     [selectedMuscle, muscleStats]
   );
 
-  // --- Filter session list by muscle ---
   const muscleSessions = useMemo(() => {
     if (!selectedMuscle) return [];
 
@@ -145,7 +142,6 @@ export default function MuscleDistribution({ sessions = [] }) {
       year: "numeric",
     });
 
-  // --- No sessions ---
   if (!sessions.length)
     return (
       <div className="bg-white border border-gray-200 rounded-3xl shadow-lg p-5 text-center text-gray-600">
@@ -153,7 +149,6 @@ export default function MuscleDistribution({ sessions = [] }) {
       </div>
     );
 
-  // --- No muscle data ---
   if (!muscleStats.length)
     return (
       <div className="bg-white border border-gray-200 rounded-3xl shadow-lg p-5 text-center text-sm text-gray-600">
@@ -163,7 +158,6 @@ export default function MuscleDistribution({ sessions = [] }) {
 
   return (
     <div className="bg-white border border-gray-200 rounded-3xl shadow-lg p-4 sm:p-5 max-w-6xl mx-auto mt-5">
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
         <div className="flex-1">
           <h3 className="text-lg font-semibold text-gray-900 mb-2 sm:mb-4">
@@ -191,7 +185,6 @@ export default function MuscleDistribution({ sessions = [] }) {
           )}
         </div>
 
-        {/* Metric Selector */}
         <div className="flex flex-col items-start sm:items-end w-full sm:w-auto">
           <label className="text-xs text-gray-500 mb-1.5 font-semibold tracking-wide">
             Display Metric
@@ -210,7 +203,6 @@ export default function MuscleDistribution({ sessions = [] }) {
         </div>
       </div>
 
-      {/* --- Chart --- */}
       <div className="mb-3 sm:mb-4">
         <MuscleDistributionChart
           data={muscleStats}
@@ -219,14 +211,12 @@ export default function MuscleDistribution({ sessions = [] }) {
         />
       </div>
 
-      {/* --- Muscle Details --- */}
       {muscleDetail ? (
         <>
           <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-4 mt-5">
             {muscleDetail.muscle} Analysis
           </h4>
 
-          {/* Summary Cards */}
           <div className="flex sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-3 overflow-x-auto scrollbar-hide pb-2 mb-6 -mx-2 px-2">
             <SummaryCard
               title="Sessions"
@@ -262,7 +252,6 @@ export default function MuscleDistribution({ sessions = [] }) {
             />
           </div>
 
-          {/* Session History Toggle */}
           <div className="flex justify-center mb-3">
             <button
               onClick={() => setShowSessions(!showSessions)}
@@ -281,7 +270,6 @@ export default function MuscleDistribution({ sessions = [] }) {
             </button>
           </div>
 
-          {/* --- Session History --- */}
           {showSessions &&
             (muscleSessions.length > 0 ? (
               <div className="mt-5 space-y-5">
@@ -315,7 +303,6 @@ export default function MuscleDistribution({ sessions = [] }) {
                     key={idx}
                     className="rounded-xl bg-blue-50/40 border border-blue-200 p-3 sm:p-4 transition hover:shadow-md"
                   >
-                    {/* Header */}
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3">
                       <div className="flex items-center gap-3">
                         <span className="text-sm flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 bg-blue-100 text-blue-700 font-bold rounded-full">
@@ -352,7 +339,6 @@ export default function MuscleDistribution({ sessions = [] }) {
                       </div>
                     </div>
 
-                    {/* Exercise List */}
                     <div className="space-y-2 border-t border-blue-100 pt-2">
                       {[...s.exerciseMap.entries()].map(([exName, sets]) => (
                         <div key={exName} className="space-y-1">

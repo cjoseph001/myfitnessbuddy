@@ -1,4 +1,3 @@
-// src/components/analytics/ExerciseWorkedTable.jsx
 import React, { useState } from "react";
 
 export default function ExerciseWorkedTable({ sessions }) {
@@ -67,7 +66,6 @@ export default function ExerciseWorkedTable({ sessions }) {
         Exercise Analysis
       </h3>
 
-      {/* Metric Selector */}
       <div className="flex flex-wrap gap-2 mb-5">
         {["sets", "reps", "volume"].map((m) => (
           <button
@@ -84,7 +82,6 @@ export default function ExerciseWorkedTable({ sessions }) {
         ))}
       </div>
 
-      {/* Insights */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
         {[
           {
@@ -119,7 +116,6 @@ export default function ExerciseWorkedTable({ sessions }) {
         ))}
       </div>
 
-      {/* Expand / Collapse */}
       <div className="text-center">
         <button
           onClick={() => setExpanded(!expanded)}
@@ -136,7 +132,6 @@ export default function ExerciseWorkedTable({ sessions }) {
         </button>
       </div>
 
-      {/* Table */}
       {expanded && (
         <div className="overflow-x-auto mt-6">
           <table className="min-w-[900px] w-full text-sm text-gray-700 border-separate border-spacing-0 rounded-xl">

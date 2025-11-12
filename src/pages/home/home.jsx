@@ -173,8 +173,6 @@ export default function Home() {
           </button>
         </div>
       )}
-
-      {/* Workout Templates Section */}
       <section className="mb-10 w-full max-w-none">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">Workout Templates</h2>
@@ -355,7 +353,6 @@ export default function Home() {
                     ))}
                   </div>
 
-                  {/* View Button */}
                   <button
                     onClick={() => navigate(`/workouts/${linkDate}`)}
                     className="w-full text-sm py-1.5 mt-1 bg-white text-blue-600 font-semibold rounded-2xl border border-blue-100 shadow-sm hover:bg-blue-50 hover:shadow-md transition-all duration-200"

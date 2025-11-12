@@ -7,7 +7,7 @@ export default function ExercisePerformance({ sessions }) {
   const [selectedExercise, setSelectedExercise] = useState("");
   const [showHistory, setShowHistory] = useState(false);
   const [showEpleyInfo, setShowEpleyInfo] = useState(false);
-  const [sortOrder, setSortOrder] = useState("desc"); // "desc" = newest first
+  const [sortOrder, setSortOrder] = useState("desc");
 
   const epleyRef = useRef(null);
 
@@ -62,7 +62,7 @@ export default function ExercisePerformance({ sessions }) {
           (ex.sets || []).forEach((set, idx) => {
             const reps = set.reps || 0;
             const weight = set.weight || 0;
-            const est1RM = Math.round(weight * (1 + reps / 30)); // Epley
+            const est1RM = Math.round(weight * (1 + reps / 30));
             totalReps += reps;
             totalVolume += reps * weight;
             total1RM += est1RM;

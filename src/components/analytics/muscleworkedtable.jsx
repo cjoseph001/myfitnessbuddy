@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export default function MuscleWorkedTable({ sessions }) {
   const [expanded, setExpanded] = useState(false);
-  const [metric, setMetric] = useState("sets"); // default metric
+  const [metric, setMetric] = useState("sets");
 
   if (!sessions?.length) return null;
 
@@ -90,12 +90,10 @@ export default function MuscleWorkedTable({ sessions }) {
 
   return (
     <div className="bg-white/90 backdrop-blur-sm border border-gray-200 rounded-3xl shadow-lg px-5 py-4 max-w-6xl mx-auto mt-4">
-      {/* Header */}
       <h3 className="text-lg font-semibold text-gray-800 mb-2.5">
         Muscle Analysis
       </h3>
 
-      {/* Metric Selector */}
       <div className="flex gap-3 mb-5">
         {["sets", "reps", "volume"].map((m) => (
           <button
@@ -111,7 +109,6 @@ export default function MuscleWorkedTable({ sessions }) {
           </button>
         ))}
       </div>
-      {/* Insights */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
         {[
           {
@@ -148,7 +145,6 @@ export default function MuscleWorkedTable({ sessions }) {
         ))}
       </div>
 
-      {/* Expand / Collapse Button */}
       <div className="text-center">
         <button
           onClick={() => setExpanded(!expanded)}
@@ -165,7 +161,6 @@ export default function MuscleWorkedTable({ sessions }) {
         </button>
       </div>
 
-      {/* Muscle Table */}
       {expanded && (
         <div className="overflow-x-auto mt-5">
           <table className="min-w-[900px] w-full text-sm text-gray-700 border-separate border-spacing-0 rounded-xl">

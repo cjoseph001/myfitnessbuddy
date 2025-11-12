@@ -39,10 +39,8 @@ export default function WorkoutTemplateCard({ template, onDelete }) {
       aria-labelledby={`template-${template.id}-title`}
       className="relative bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
     >
-      {/* Accent line */}
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-300" />
 
-      {/* Header */}
       <div className="flex items-start justify-between pb-4 pt-3.5 pr-3 pl-4.5">
         <div className="min-w-0 flex-1">
           <h3
@@ -118,7 +116,6 @@ export default function WorkoutTemplateCard({ template, onDelete }) {
                           <span>{name}</span>
                         </p>
 
-                        {/* Badges */}
                         <div className="mt-1 flex flex-wrap items-center gap-1.5 text-xs font-medium text-gray-900">
                           {muscle && (
                             <span className="text-gray-700">{muscle}</span>
@@ -133,7 +130,6 @@ export default function WorkoutTemplateCard({ template, onDelete }) {
                       </div>
                     </div>
 
-                    {/* Sets Section */}
                     <div className="mt-3.5">
                       {ex.sets && ex.sets.length > 0 ? (
                         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-gray-200">

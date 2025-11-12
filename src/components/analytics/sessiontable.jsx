@@ -51,11 +51,9 @@ export default function SessionTable({ sessions }) {
         </div>
       </div>
 
-      {/* Paginated Wrapper */}
       <PaginatedTableWrapper data={sessions} rowsPerPage={10}>
         {(currentData) => (
           <>
-            {/* Table */}
             <div className="overflow-x-auto rounded-xl">
               <table className="min-w-[850px] w-full text-sm text-gray-700 border-separate border-spacing-0">
                 <thead className="bg-gray-50/90 border-b border-gray-200 sticky top-0 z-10">

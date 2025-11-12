@@ -1,4 +1,3 @@
-// src/components/analytics/ExercisePerformanceChart.jsx
 import React, { useMemo } from "react";
 import {
   LineChart,
@@ -12,7 +11,6 @@ import {
   Area,
 } from "recharts";
 
-/** Custom tick: just show numbered session */
 function CustomTick({ x, y, index }) {
   return (
     <g transform={`translate(${x},${y + 6})`}>
@@ -139,7 +137,7 @@ export default function ExercisePerformanceChart({ data, exercise }) {
                 ]}
                 tick={{ fontSize: 11, fill: "#6b7280" }}
                 tickMargin={6}
-                width={55} // include space for label
+                width={55}
                 axisLine={{ stroke: "#94a3b8" }}
                 tickLine={{ stroke: "#94a3b8" }}
                 label={{
@@ -199,9 +197,7 @@ export default function ExercisePerformanceChart({ data, exercise }) {
         </div>
       </div>
 
-      {/* Insights */}
       <div className="flex flex-wrap justify-center gap-10 mt-5 text-center">
-        {/* Best Performance */}
         <div className="flex-1 min-w-[150px]">
           <p className="font-medium text-sm text-gray-900">Best Performance</p>
           <p className="text-blue-600 font-semibold text-base">
@@ -212,7 +208,6 @@ export default function ExercisePerformanceChart({ data, exercise }) {
           </p>
         </div>
 
-        {/* Best Improvement */}
         {bestImprovement.from && bestImprovement.to && (
           <div className="flex-1 min-w-[150px]">
             <p className="font-medium text-gray-900 text-sm">
@@ -228,7 +223,6 @@ export default function ExercisePerformanceChart({ data, exercise }) {
           </div>
         )}
 
-        {/* Trend */}
         <div className="flex-1 min-w-[150px]">
           <p className="font-medium text-gray-900 text-sm">Overall Trend</p>
           <p className="text-blue-600 font-semibold text-base">{trend}</p>
